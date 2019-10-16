@@ -513,6 +513,7 @@ class ExecutionHelper(object):
 
     @stopit.threading_timeoutable()
     def test_featurise(self, primitive, df):
+        print(primitive.executables)
         persistent = primitive.is_persistent
         ncols = [col.format() for col in df.columns]
         featurecols = self.raw_data_columns(self.data_manager.input_columns)
@@ -522,7 +523,10 @@ class ExecutionHelper(object):
             if not persistent:
                 executable = self.instantiate_primitive(primitive)
             else:
-                executable = primitive.executables[col]
+                if col in primitive.executables:
+                    executable = primitive.executables[col]
+                else:
+                    executable=None
             if executable is None:
                 return None
 

@@ -1,3 +1,4 @@
+
 class Primitive(object):
     """
     Defines a primitive and its details

@@ -49,7 +49,8 @@ class Controller(object):
     feature_extraction_flag = False
     imputation_flag = False
     replaced_model_flag = False
-
+    exclude_model_flag = False
+    replace_model_flag = False
 
 
     """
